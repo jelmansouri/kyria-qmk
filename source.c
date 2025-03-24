@@ -14,13 +14,13 @@ bool oled_task_user(void) {
         // clang-format on
 
         oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR("Kyria rev3.0\n\n"), false);
+        oled_write_P(PSTR("\nKyria rev3.0\n\n"), false);
 
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
         switch (get_highest_layer(layer_state|default_layer_state)) {
             case 0:
-                oled_write_P(PSTR("QWERTY\n"), false);
+                oled_write_P(PSTR("Base\n"), false);
                 break;
             case 1:
                 oled_write_P(PSTR("Lower\n"), false);
@@ -28,8 +28,8 @@ bool oled_task_user(void) {
             case 2:
                 oled_write_P(PSTR("Higher\n"), false);
                 break;
-            case 4:
-                oled_write_P(PSTR("Nav\n"), false);
+            case 3:
+                oled_write_P(PSTR("3D Nav\n"), false);
                 break;
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
