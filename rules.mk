@@ -1,3 +1,5 @@
-CONVERT_TO=liatris
+# extra sources
+SRC +=  oled.c
 
-SRC +=  source.c
+# converting to RP2040ce/liatris
+CONVERT_TO=liatris

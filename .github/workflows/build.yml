@@ -21,7 +21,7 @@ jobs:
         path: users/${{ github.actor }}
 
     - name: Build firmware
-      run: qmk compile "users/${{ github.actor }}/keymap.json"
+      run: qmk compile -kb "splitkb/kyria/rev3" -km "users/${{ github.actor }}"
 
     - name: Archive firmware
       uses: actions/upload-artifact@v4

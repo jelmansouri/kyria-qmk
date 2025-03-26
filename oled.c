@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "keymap.h"
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
@@ -19,27 +20,21 @@ bool oled_task_user(void) {
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
         switch (get_highest_layer(layer_state|default_layer_state)) {
-            case 0:
+            case _BASE:
                 oled_write_P(PSTR("Base\n"), false);
                 break;
-            case 1:
+            case _LOWER:
                 oled_write_P(PSTR("Lower\n"), false);
                 break;
-            case 2:
-                oled_write_P(PSTR("Higher\n"), false);
+            case _RAISE:
+                oled_write_P(PSTR("Raise\n"), false);
                 break;
-            case 3:
+            case _NAV_3D:
                 oled_write_P(PSTR("3D Nav\n"), false);
                 break;
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
         }
-
-        // Write host Keyboard LED Status to OLEDs
-        led_t led_usb_state = host_keyboard_led_state();
-        oled_write_P(led_usb_state.num_lock    ? PSTR("NUMLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state.caps_lock   ? PSTR("CAPLCK ") : PSTR("       "), false);
-        oled_write_P(led_usb_state.scroll_lock ? PSTR("SCRLCK ") : PSTR("       "), false);
     } else {
         // clang-format off
         static const char PROGMEM kyria_logo[] = {
