@@ -18,7 +18,7 @@ jobs:
     - name: Checkout userspace
       uses: actions/checkout@v3
       with:
-        path: splitkb/kyria/keymaps/${{ github.actor }}
+        path: keyboards/splitkb/kyria/keymaps/${{ github.actor }}
 
     - name: Build firmware
       run: qmk compile -kb "splitkb/kyria/rev3" -km "${{ github.actor }}"
