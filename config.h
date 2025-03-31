@@ -50,4 +50,11 @@
 #define ENABLE_RGB_MATRIX_STARLIGHT_DUAL_HUE  // LEDs turn on and off at random at varying brightness, modifies user set hue by +- 30
 #define ENABLE_RGB_MATRIX_STARLIGHT_DUAL_SAT  // LEDs turn on and off at random at varying brightness, modifies user set saturation by +- 30
 #define ENABLE_RGB_MATRIX_RIVERFLOW           // Modification to breathing animation, offset's animation depending on key location to simulate a river flowing
-#endif
+
+#define RGB_MATRIX_TIMEOUT 600000
+#endif // RGB_MATRIX_ENABLE
+
+#ifdef OLED_ENABLE
+#define OLED_TIMEOUT 600000
+#endif // OLED_ENABLE
+
